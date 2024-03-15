@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vote Predictor</title>
+
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+
+  <!-- Anime JavaScript-->
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+
+  <!-- JavaScript Function -->
+  <script>
+    function optionChanged(value) {
+      // Handle the change in the dropdown menus
+      console.log("Selected value:", value);
+      // You can add your logic here to process the selected value
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 jumbotron text-center">
+        <h1>Voter Predictor</h1>
+        <p>Use the dropdown menus below to explore if someone will vote for president, if they will vote, and if they are a swing voter</p>
+      </div>
+
+</div>
+    <h2>Predicting how someone will vote for president based on their personal characteristics</h2>
+</div>
+
+</div>
+    <div class="row">
+      <div class="col-md-4 well">
+        <h3>Select Party ID</h3>
+        <select id="PartyID_Options" onchange="optionChanged(this.value)"></select>
+      </div>
+
+      <div class="col-md-4 well">
+        <h3>Select Age</h3>
+        <select id="Age_Options" onchange="optionChanged(this.value)"></select>
+      </div>
+
+      <div class="col-md-4 well">
+        <h3>Select Gender</h3>
+        <select id="Gender_Options" onchange="optionChanged(this.value)"></select>
+      </div>
+
+      <div class="col-md-4 well">
+        <h3>Select Location</h3>
+        <select id="Location_Options" onchange="optionChanged(this.value)"></select>
+      </div>
+
+      <div class="col-md-4 well">
+        <h3>Select does the respondent think the county is on the "right track"</h3>
+        <select id="Right_Track_Options" onchange="optionChanged(this.value)"></select>
+      </div>
+
+      <div class="col-md-4 well">
+        <h3>Select Thermometer Rating Biden</h3>
+        <select id="Thermo_Biden_Options" onchange="optionChanged(this.value)"></select>
+      </div>
+
+      <div class="col-md-4 well">
+        <h3>Select Thermometer Rating Trump</h3>
+        <select id="Thermo_Trump_Options" onchange="optionChanged(this.value)"></select>
+      </div>
+
+      <div class="col-md-4 well">
+        <h3>Select Race/Ethnicity</h3>
+        <select id="Race_Ethnicity_Options" onchange="optionChanged(this.value)"></select>
+      </div>
+
+      <div class="col-md-4 well">
+        <h3>Select respondent's total household income category</h3>
+        <select id="Income_Options" onchange="optionChanged(this.value)"></select>
+      </div>
+    </div>
+
+    </div>
+        <h4>Likelihood of someone voting in the general election (for president) or not</h4>
+    </div>
+
+  <div class="row">
+    <div class="col-md-4 well">
+      <h3>Select Did respondent vote in the primary election?</h3>
+      <select id="Primary_Vote_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+      <h3>Select Age</h3>
+      <select id="Age_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+      <h3>Select Gender</h3>
+      <select id="Gender_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+        <h3>Select Race/Ethnicity</h3>
+        <select id="Race_Ethnicity_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+      <h3>Select number of years a respondent has lived in a community</h3>
+      <select id="Years_lived_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+      <h3>Select respondent's total household income category</h3>
+      <select id="Income_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+      <h3>Select if a respondent believes the presidential race will be close in their state</h3>
+      <select id="Swing_State_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+  </div>
+</div>
+
+
+</body>
+
+</html>
