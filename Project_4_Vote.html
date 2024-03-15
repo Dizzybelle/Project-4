@@ -8,7 +8,7 @@
   <title>Vote Predictor</title>
 
   <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="static/css/Project_4_Style.css">
 
   <!-- Anime JavaScript-->
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
@@ -32,21 +32,23 @@
         <p>Use the dropdown menus below to explore if someone will vote for president, if they will vote, and if they are a swing voter</p>
       </div>
 
+<div class="line1"></div>
+
 </div>
     <h2>Predicting how someone will vote for president based on their personal characteristics</h2>
 </div>
 
 </div>
-    <div class="row">
-      <div class="col-md-4 well">
-        <h3>Select Party ID</h3>
-        <select id="PartyID_Options" onchange="optionChanged(this.value)"></select>
-      </div>
-
-      <div class="col-md-4 well">
-        <h3>Select Age</h3>
-        <select id="Age_Options" onchange="optionChanged(this.value)"></select>
-      </div>
+<div class="row">
+    <div class="col-md-4 well">
+      <h3>Select Party ID</h3>
+      <select id="PartyID_Options" onchange="optionChangedParty(this.value)"></select>
+    </div>
+  
+    <div class="col-md-4 well">
+      <h3>Select Age</h3>
+      <select id="Age_Options" onchange="optionChangedAge(this.value)"></select>
+    </div>
 
       <div class="col-md-4 well">
         <h3>Select Gender</h3>
@@ -83,6 +85,16 @@
         <select id="Income_Options" onchange="optionChanged(this.value)"></select>
       </div>
     </div>
+
+    <div class="presidentProb">
+        <h5>Probability of Voting for Biden: <span id="probVoteBiden"></span></h5>
+    </div>
+
+    <div class="presidentProbGauge">
+        <div id="gauge1"></div>
+    </div>
+
+    <div class="line2"></div>
 
     </div>
         <h4>Likelihood of someone voting in the general election (for president) or not</h4>
@@ -124,8 +136,50 @@
       <select id="Swing_State_Options" onchange="optionChanged(this.value)"></select>
     </div>
   </div>
+
+<div class="line3"></div>
+
+</div>
+    <h4>Predicting who is likely to be a swing voter in the presidential election</h4>
 </div>
 
+<div class="row">
+    <div class="col-md-4 well">
+      <h3>Select respondents ideology (liberal/conservative)</h3>
+      <select id="Ideology_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+      <h3>Select strength of party ID</h3>
+      <select id="Party_Strength_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+      <h3>Select respondent like-dislike of Biden</h3>
+      <select id="Dislike_Biden_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+        <h3>Select respondent like-dislike of Biden</h3>
+        <select id="Dislike_Trump_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+      <h3>Select if a respondent prefers split or unified government</h3>
+      <select id="Split_Unified_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+
+    <div class="col-md-4 well">
+      <h3>Select if a respondent believes the country is on the right track</h3>
+      <select id="Country_Track_Options" onchange="optionChanged(this.value)"></select>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="./static/js/Project_4_app.js"></script>
 
 </body>
 
