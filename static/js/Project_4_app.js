@@ -31,6 +31,7 @@ let selectedAge;
 let mathTest;
 let partyNumber;
 let probVoteBiden;
+let probVoteTrump;
 
 // Function to convert partyID string to text and update the party number
 function optionPartyNumber() {
@@ -62,15 +63,16 @@ function optionChangedAge(value) {
 function presidentVoteProb() {
     // Biden vote probability
     //NEED TO REPLACE WITH ACTUAL FORMULA JUST TESTING FOR NOW
-        probVoteBiden = (partyNumber/2) * (selectedAge/80); 
+        probVoteBiden = (partyNumber/2) * (selectedAge/80);
+        probVoteTrump = 1 - probVoteBiden; 
         // Update probVoteBiden
         document.getElementById("probVoteBiden").innerHTML = probVoteBiden;
-        gaugeChart();
+        document.getElementById("probVoteTrump").innerHTML = probVoteTrump;
+        gaugeChart1();
 }
 
-//Creating the initial gauge chart for belly button washing frequency, looked up how to make a gauge chart on plotly.com
-function gaugeChart() {
-    //Looked up how to format the chart on stack overflow
+//Creating the gauge chart for vote of Biden vs. Trump
+function gaugeChart1() {
     let data = [{
         domain: { x: [0, 1], y: [0, 1] },
         value: probVoteBiden,
@@ -84,9 +86,6 @@ function gaugeChart() {
             axis:{
                 range:[0,1],
                 visible: false,
-                // thickmode: "array",
-                // tickvals: [.1,.2,.3,.4,.5,.6,.7,.8,.9],
-                // tickfont: {size: 1, font:"Arial Black"},
                 ticks: ""
             },
             steps: [
@@ -105,15 +104,16 @@ function gaugeChart() {
     }];
     let layout = {
         width: 500,
-        height: 500,
+        height: 400,
+        margin: { t: 50, b: 0, l: 50, r: 50 },
         title: {
-            text: "Voting Biden or Trump?",
+            text: "Voting for Biden or Trump?",
             font: {
                 family: 'Arial Black',
                 size: 24
             },
             x: 0.5,
-            y: 0.8
+            y: 0.85
             },
             annotations: [{
             text: "Darker blue is more likely Biden, darker red is more likely Trump",
@@ -130,23 +130,143 @@ function gaugeChart() {
         Plotly.newPlot("gauge1", data, layout)
     };
 
-// //Creating a function to update the gauge chart when a new subject is selected
-// function getGaugeChart() {
-//     let testSubjectID = probVoteBiden;
-//     //console.log("Selected ID: ", testSubjectID);
-//     let selectedID = samples.find(sample => sample.id === testSubjectID);
-//     let subjectID = parseInt(selectedID.id);
-//     let selectedIDMetadata = metadata.find(sample => sample.id === subjectID);
-//     let washFreq = selectedIDMetadata.wfreq;
-//     let data = [{
-//         value: washFreq,
-//     }];
-//     Plotly.restyle("gauge1", "value", [probVoteBiden]);
-
-// }
-
-//Creating the gauge chart 
-gaugeChart()
+//Creating the gauge1 chart 
+gaugeChart1()
 
 // Calling the function to populate the dropdown menus
 populateDropdowns();
+
+//****NEED TO CHANGE VALUE TO PROBABILITY OF VOTING//////
+//Creating the gauge chart for probability of voting
+function gaugeChart2() {
+    let data = [{
+        domain: { x: [0, 1], y: [0, 1] },
+        value: 0.45,
+        type: "indicator",
+        mode: "gauge+number",
+        gauge: {
+            shape: "angular",
+            bar: {thickness:0.25, color: "rgb(0,0,0)"},
+            bordercolor: "rgb(0,0,0)",
+            borderwidth: 2,
+            axis:{
+                range:[0,1],
+                visible: true,
+                thickmode: "array",
+                tickvals: [.1, .2, .3, .4, .5, .6, .7, .8, .9],
+                tickfont: {size: 16, font:"Arial Black"},
+                ticks: "outside"
+            },
+            steps: [
+                { range: [0, 0.1], color: "#ff0000" },
+                { range: [0.1, 0.2], color: "#ff3300" },
+                { range: [0.2, 0.3], color: "#ff6600" },
+                { range: [0.3, 0.4], color: "#ff9900" },
+                { range: [0.4, 0.5], color: "#ffcc00" },
+                { range: [0.5, 0.6], color: "#ffff00" },
+                { range: [0.6, 0.7], color: "#ccff00" },
+                { range: [0.7, 0.8], color: "#99ff00" },
+                { range: [0.8, 0.9], color: "#66ff00" },
+                { range: [0.9, 1], color: "#33ff00" },
+            ]
+        }
+    }];
+    let layout = {
+        width: 500,
+        height: 400,
+        margin: { t: 50, b: 0, l: 50, r: 50 },
+        title: {
+            text: "Probability of a Respodent Voting",
+            font: {
+                family: 'Arial Black',
+                size: 24
+            },
+            x: 0.5,
+            y: 0.86
+            },
+            // annotations: [{
+            // text: "Darker blue is more likely Biden, darker red is more likely Trump",
+            // showarrow: false,
+            // align:'top center',
+            // font: {
+            //     family: "Arial",
+            //     size: 15
+            // },
+            // x: 0.5,
+            // y: 0.9 
+        // }],
+    };
+        Plotly.newPlot("gauge2", data, layout)
+    };
+
+//Creating the gauge2 chart 
+gaugeChart2()
+
+
+
+
+//****NEED TO CHANGE VALUE TO PROBABILITY OF being a swing voter//////
+//Creating the gauge chart for probability of being a swing voter
+function gaugeChart3() {
+    let data = [{
+        domain: { x: [0, 1], y: [0, 1] },
+        value: 0.75,
+        type: "indicator",
+        mode: "gauge+number",
+        gauge: {
+            shape: "angular",
+            bar: {thickness:0.25, color: "rgb(0,0,0)"},
+            bordercolor: "rgb(0,0,0)",
+            borderwidth: 2,
+            axis:{
+                range:[0,1],
+                visible: true,
+                thickmode: "array",
+                tickvals: [.1, .2, .3, .4, .5, .6, .7, .8, .9],
+                tickfont: {size: 16, font:"Arial Black"},
+                ticks: "outside"
+            },
+            steps: [
+                { range: [0, 0.1], color: "#e6e6fa" }, // Very light purple
+                { range: [0.1, 0.2], color: "#d8bfd8" },
+                { range: [0.2, 0.3], color: "#c0c0db" },
+                { range: [0.3, 0.4], color: "#a49ac1" },
+                { range: [0.4, 0.5], color: "#8a7eb7" },
+                { range: [0.5, 0.6], color: "#725692" },
+                { range: [0.6, 0.7], color: "#5b4474" },
+                { range: [0.7, 0.8], color: "#452a4e" },
+                { range: [0.8, 0.9], color: "#310f29" },
+                { range: [0.9, 1], color: "#4b0082" } // Dark purple
+            ]
+        }
+    }];
+    let layout = {
+        width: 500,
+        height: 400,
+        margin: { t: 50, b: 0, l: 50, r: 50 },
+        title: {
+            text: "Swing Voter Probabilty",
+            font: {
+                family: 'Arial Black',
+                size: 24
+            },
+            x: 0.5,
+            y: 0.86
+            },
+            // annotations: [{
+            // text: "Darker blue is more likely Biden, darker red is more likely Trump",
+            // showarrow: false,
+            // align:'top center',
+            // font: {
+            //     family: "Arial",
+            //     size: 15
+            // },
+            // x: 0.5,
+            // y: 0.9 
+        // }],
+    };
+        Plotly.newPlot("gauge3", data, layout)
+    };
+
+//Creating the gauge2 chart 
+gaugeChart3()

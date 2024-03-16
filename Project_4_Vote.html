@@ -85,10 +85,18 @@
         <select id="Income_Options" onchange="optionChanged(this.value)"></select>
       </div>
     </div>
-
-    <div class="presidentProb">
+ 
+    <div class="BidenProb">
         <h5>Probability of Voting for Biden: <span id="probVoteBiden"></span></h5>
     </div>
+
+    <div id="probVoteBidenBox"></div>
+
+    <div class="TrumpProb">
+        <h6>Probability of Voting for Trump:  <span id="probVoteTrump"></span></h6>
+    </div>
+
+    <div id="probVoteTrumpBox"></div>
 
     <div class="presidentProbGauge">
         <div id="gauge1"></div>
@@ -136,9 +144,22 @@
       <select id="Swing_State_Options" onchange="optionChanged(this.value)"></select>
     </div>
   </div>
+</div>
+
+<!-- Output for voting probability -->
+<div class="voteProb">
+    <h7>Probability of Voting in the General Election: <span id="probVoting"></span></h7>
+</div>
+
+<div id="probVotingBox"></div>
+
+<div class="voteProbGauge">
+    <div id="gauge2"></div>
+</div>
 
 <div class="line3"></div>
 
+<!-- Predicting who is likely to be a swing voter -->
 </div>
     <h4>Predicting who is likely to be a swing voter in the presidential election</h4>
 </div>
@@ -174,6 +195,24 @@
       <select id="Country_Track_Options" onchange="optionChanged(this.value)"></select>
     </div>
   </div>
+
+<!-- Output for voting probability -->
+<div class="swingProb">
+    <h8>Probability of a Voter being a Swing Voter: <span id="swingVoting"></span></h8>
+</div>
+
+<div id="swingVotingBox"></div>
+
+<div class="swingProbGauge">
+    <div id="gauge3"></div>
+</div>
+
+<div class="line4"></div>
+
+<!-- Adding in horizontal lines -->
+<div class="horizontalLine1"></div>
+<div class="horizontalLine2"></div>
+<div class="horizontalLine3"></div>
 
 </div>
 
