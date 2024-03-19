@@ -132,14 +132,14 @@ h4{
 }
 
 #probVoting {
-    color: rgba(0, 255, 81, 0.474);
+    color: green;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 125%;
     z-index: 2;
 }
 
 #probVotingBox {
-    width:100px;
+    width:125px;
     height:30px;
     background:lightgray;
     position: absolute;
@@ -173,7 +173,7 @@ h4{
 }
 
 #swingVotingBox {
-    width:100px;
+    width:125px;
     height:30px;
     background:lightgray;
     position: absolute;
