@@ -537,7 +537,6 @@ let primaryNumber
 // Function to change right track dropdown values
 function optionChangedPrimary(value) {
     selectedPrimary = value;
-    //Update presidentVoteProb
     optionPrimaryNumber();
 }
 //***Function to convert right track to coefficient values from each dummy variable, using 1 & 2 as placeholders now
@@ -549,63 +548,159 @@ function optionPrimaryNumber() {
     } else {
         primaryNumber = 0;
     }
+    votingProb();
+}
+
+let selectedAgeGeneral;
+// Function to change age dropdown values
+function optionChangedAgeGeneral(value) {
+    selectedAgeGeneral = parseInt(value);
+    votingProb();
+}
+
+let selectedGenderGeneral;
+let genderGeneralNumber
+// Function to change gender dropdown values
+function optionChangedGenderGeneral(value) {
+    selectedGenderGeneral = value;
+    optionGenderGeneralNumber();
+}
+//***Function to convert gender to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+function optionGenderGeneralNumber() {
+    if (selectedGenderGeneral === "Male") {
+        genderGeneralNumber = 1;
+    } else if (selectedGenderGeneral === "Female") {
+        genderGeneralNumber = 2;
+    } else {
+        genderGeneralNumber = 0;
+    }
+    votingProb();
+}
+
+let selectedRaceEthnicityGeneral;
+let raceEthnicityGeneralNumber
+// Function to change right track dropdown values
+function optionChangedRaceEthnicityGeneral(value) {
+    selectedRaceEthnicityGeneral = value;
+    optionRaceEthnicityGeneralNumber();
+}
+//***Function to convert right track to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+function optionRaceEthnicityGeneralNumber() {
+    if (selectedRaceEthnicityGeneral === "White, non-Hispanic") {
+        raceEthnicityGeneralNumber = 1;
+    } else if (selectedRaceEthnicityGeneral === "Black, non-Hispanic") {
+        raceEthnicityGeneralNumber = 2;
+    } else if (selectedRaceEthnicityGeneral === "Hispanic") {
+        raceEthnicityGeneralNumber = 3;
+    } else if (selectedRaceEthnicityGeneral === "Asian or Native Hawaiian/other Pacific Islander, non-Hispanic alone") {
+        raceEthnicityGeneralNumber = 4;
+    } else if (selectedRaceEthnicityGeneral === "Native American/Alaska Native or other race, non-Hispanic alone") {
+        raceEthnicityGeneralNumber = 5;
+    } else if (selectedRaceEthnicityGeneral === "Multiple races, non-Hispanic") {
+        raceEthnicityGeneralNumber = 6;
+    } else {
+        raceEthnicityGeneralNumber = 0;
+    }
+    votingProb();
+}
+
+let selectedCommunityGeneral;
+// Function to change age dropdown values
+function optionChangedCommunityGeneral(value) {
+    selectedCommunityGeneral = parseInt(value);
+    votingProb();
+}
+   
+let selectedIncomeGeneral;
+let incomeGeneralNumber
+// Function to change Income dropdown values
+function optionChangedIncomeGeneral(value) {
+    selectedIncomeGeneral = value;
+    //Update presidentVoteProb
+    optionIncomeGeneralNumber();
+}
+//***Function to convert Income to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+function optionIncomeGeneralNumber() {
+    if (selectedIncomeGeneral === "Under $9,999") {
+        incomeGeneralNumber = 1;
+    } else if (selectedIncomeGeneral === "$10,000-14,999") {
+        incomeGeneralNumber = 2;
+    } else if (selectedIncomeGeneral === "$15,000-19,999") {
+        incomeGeneralNumber = 3;
+    } else if (selectedIncomeGeneral === "$20,000-24,999") {
+        incomeGeneralNumber = 4;
+    } else if (selectedIncomeGeneral === "$25,000-29,999") {
+        incomeGeneralNumber = 5;
+    } else if (selectedIncomeGeneral === "$30,000-34,999") {
+        incomeGeneralNumber = 6;
+    } else if (selectedIncomeGeneral === "$35,000-39,999") {
+        incomeGeneralNumber = 7;
+    } else if (selectedIncomeGeneral === "$40,000-44,999") {
+        incomeGeneralNumber = 8;
+    } else if (selectedIncomeGeneral === "$45,000-49,999") {
+        incomeGeneralNumber = 9;
+    } else if (selectedIncomeGeneral === "$50,000-59,999") {
+        incomeGeneralNumber = 10;
+    } else if (selectedIncomeGeneral === "$60,000-64,999") {
+        incomeGeneralNumber = 11;
+    } else if (selectedIncomeGeneral === "$65,000-69,999") {
+        incomeGeneralNumber = 12;
+    } else if (selectedIncomeGeneral === "$70,000-74,999") {
+        incomeGeneralNumber = 13;
+    } else if (selectedIncomeGeneral === "$75,000-79,999") {
+        incomeGeneralNumber = 14;
+    } else if (selectedIncomeGeneral === "$80,000-89,999") {
+        incomeGeneralNumber = 15;
+    } else if (selectedIncomeGeneral === "$90,000-99,999") {
+        incomeGeneralNumber = 16;
+    } else if (selectedIncomeGeneral === "$100,000-109,999") {
+        incomeGeneralNumber = 17;
+    } else if (selectedIncomeGeneral === "$110,000-124,999") {
+        incomeGeneralNumber = 18;
+    } else if (selectedIncomeGeneral === "$125,000-149,999") {
+        incomeGeneralNumber = 19;
+    } else if (selectedIncomeGeneral === "$150,000-174,999") {
+        incomeGeneralNumber = 20;
+    } else if (selectedIncomeGeneral === "$175,000-249,999") {
+        incomeGeneralNumber = 21;
+    } else if (selectedIncomeGeneral === "$250,000 or more") {
+        incomeGeneralNumber = 22;
+    } else {
+        incomeGeneralNumber = 0;
+    }
     //Update presidentVoteProb
     votingProb();
 }
-    
-////////////////////////////////////////////////////////////////////////////////////////////////////
-            
-//     // agesVoting dropdown
-//     ages.forEach(ageVoting => {
-//         const option = document.createElement("option");
-//         option.text = ageVoting;
-//         option.value = ageVoting;
-//         agesVotingSelect.appendChild(option);
-//     });  
-//     // gendersVoting dropdown
-//     genders.forEach(gender => {
-//         const option = document.createElement("option");
-//         option.text = gender;
-//         option.value = gender;
-//         gendersVotingSelect.appendChild(option);
-//     });              
-//     //raceEthnicityVoting dropdown
-//     raceEthnicity.forEach(race => {
-//         const option = document.createElement("option");
-//         option.text = race;
-//         option.value = race;
-//         raceEthnicityVotingSelect.appendChild(option);
-//     });             
-//     //yearsCommunity dropdown
-//     yearsCommunity.forEach(years => {
-//         const option = document.createElement("option");
-//         option.text = years;
-//         option.value = years;
-//         yearsCommunitySelect.appendChild(option);
-//     });        
-//     //incomeVoting dropdown
-//     income.forEach(incomes => {
-//         const option = document.createElement("option");
-//         option.text = incomes;
-//         option.value = incomes;
-//         incomeVoingSelect.appendChild(option);
-//     });          
-//     //swingState dropdown
-//     swingState.forEach(swing => {
-//         const option = document.createElement("option");
-//         option.text = swing;
-//         option.value = swing;
-//         swingStateSelect.appendChild(option);
-//     });
-////////////////////////////////////////////////////////////////////////////////////////////////////
+
+let selectedswingStateGeneral;
+let swingStateGeneralNumber
+// Function to change swingState dropdown values
+function optionChangedswingStateGeneral(value) {
+    selectedswingStateGeneral = value;
+    optionswingStateGeneralNumber();
+}
+//***Function to convert swingState to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+function optionswingStateGeneralNumber() {
+    if (selectedswingStateGeneral === "Will be close") {
+        swingStateGeneralNumber = 1;
+    } else if (selectedswingStateGeneral === "Win by quite a bit") {
+        swingStateGeneralNumber = 2;
+    } else if (selectedswingStateGeneral === "Inapplicable") {
+        swingStateGeneralNumber = 3;
+    } else {
+        swingStateGeneralNumber = 0;
+    }
+    votingProb();
+}
 
 let probVoting;
-// Function to calculate probability of voting for Biden or Trump
+// Function to calculate probability of voting in the general election
 function votingProb() {
     // Biden vote probability
     //****NEED TO REPLACE WITH ACTUAL FORMULA JUST TESTING FOR NOW
-        probVoting = (primaryNumber/2);
-        // Update probVoteBiden
+        probVoting = (primaryNumber/2) * (selectedAgeGeneral/50) * (genderGeneralNumber) * (raceEthnicityGeneralNumber/4) *
+        (selectedCommunityGeneral/20) * (incomeGeneralNumber/10) * (swingStateGeneralNumber);
+        // Update votingProb
         document.getElementById("probVoting").innerHTML = probVoting.toFixed(5);
         gaugeChart2();
 }
