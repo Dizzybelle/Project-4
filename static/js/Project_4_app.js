@@ -43,7 +43,7 @@ const ideology = ["<select ideology>", "Extremely liberal", "Liberal" ,"Slightly
                     ,"Slightly conservative", "Conservative" ,"Extremely conservative" ,"Haven’t thought much about this"
                     ,"Don't Know", "No Response"];
 const partyStrength = ["<select party ID strenght>" ,"Strong Democrat", "Not Very Strong Democrat", "Independent Lean Democrat",
-                        "Independent", "Independent Lean Republican", "Not Very Strong Democrat", "Strong Republican", 
+                        "Independent", "Independent Lean Republican", "Not Very Strong Republican", "Strong Republican", 
                         "Don't Know", "No Response"];
 const dislikeBiden = ["<select Biden dislike>" , 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Don't Know", "No Response"];
 const dislikeTrump = ["<select Trump dislike>" , 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "Don't Know", "No Response"];
@@ -268,15 +268,24 @@ function optionPartyNumber() {
 }
 
 let selectedAge;
+let ageNumber;
 // Function to change age dropdown values
 function optionChangedAge(value) {
-    selectedAge = parseInt(value);
+    selectedAge = value;
     //Update presidentVoteProb
+    optionAgeNumber();
+}
+function optionAgeNumber() {
+    if (!isNaN(selectedAge)) {
+        ageNumber = selectedAge;
+    } else {
+        ageNumber = 0;
+    }
     presidentVoteProb();
 }
 
 let selectedGender;
-let genderNumber
+let genderNumber;
 // Function to change gender dropdown values
 function optionChangedGender(value) {
     selectedGender = value;
@@ -345,16 +354,32 @@ function optionRightTrackNumber() {
 let selectedThermoBiden;
 // Function to change ThermoBiden dropdown values
 function optionChangedThermoBiden(value) {
-    selectedThermoBiden = parseInt(value);
+    selectedThermoBiden = value;
     //Update presidentVoteProb
+    optionThermoBidenNumber();
+}
+function optionThermoBidenNumber() {
+    if (!isNaN(selectedThermoBiden)) {
+        thermoBidenNumber = selectedThermoBiden;
+    } else {
+        thermoBidenNumber = 0;
+    }
     presidentVoteProb();
 }
 
 let selectedThermoTrump;
-// Function to change ThermoTrump dropdown values
+// Function to change ThermoBiden dropdown values
 function optionChangedThermoTrump(value) {
-    selectedThermoTrump = parseInt(value);
+    selectedThermoTrump = value;
     //Update presidentVoteProb
+    optionThermoTrumpNumber();
+}
+function optionThermoTrumpNumber() {
+    if (!isNaN(selectedThermoTrump)) {
+        thermoTrumpNumber = selectedThermoTrump;
+    } else {
+        thermoTrumpNumber = 0;
+    }
     presidentVoteProb();
 }
 
@@ -454,8 +479,8 @@ let probVoteTrump;
 function presidentVoteProb() {
     // Biden vote probability
     //****NEED TO REPLACE WITH ACTUAL FORMULA JUST TESTING FOR NOW
-        probVoteBiden = (partyNumber) * (selectedAge/80) * (genderNumber) * (locationNumber) * 
-        (rightTrackNumber) * (selectedThermoBiden/50) * (selectedThermoTrump/50) * (raceEthnicityNumber/6) * 
+        probVoteBiden = (partyNumber) * (ageNumber/40) * (genderNumber) * (locationNumber) * 
+        (rightTrackNumber) * (thermoBidenNumber/20) * (thermoTrumpNumber/20) * (raceEthnicityNumber/6) * 
         (incomeNumber/21);
         probVoteTrump = 1 - probVoteBiden; 
         // Update probVoteBiden
@@ -523,7 +548,7 @@ function gaugeChart1() {
         Plotly.newPlot("gauge1", data, layout)
     };
 
-//Creating the gauge1 chart 
+//Creating gauge1 chart 
 gaugeChart1()
 
 // Calling the function to populate the dropdown menus
@@ -532,6 +557,7 @@ populateDropdowns();
 
 
 //Section on the likelihood of someone voting in the general election
+
 let selectedPrimary;
 let primaryNumber
 // Function to change right track dropdown values
@@ -552,9 +578,18 @@ function optionPrimaryNumber() {
 }
 
 let selectedAgeGeneral;
+let ageGeneralNumber;
 // Function to change age dropdown values
 function optionChangedAgeGeneral(value) {
-    selectedAgeGeneral = parseInt(value);
+    selectedAgeGeneral = value;
+    optionAgeGeneral();
+}
+function optionAgeGeneral() {
+    if (!isNaN(selectedAgeGeneral)) {
+        ageGeneralNumber = selectedAgeGeneral;
+    } else {
+        ageGeneralNumber = 0;
+    }
     votingProb();
 }
 
@@ -604,12 +639,26 @@ function optionRaceEthnicityGeneralNumber() {
     votingProb();
 }
 
+
+
 let selectedCommunityGeneral;
+let communityGeneralNumber;
 // Function to change age dropdown values
 function optionChangedCommunityGeneral(value) {
-    selectedCommunityGeneral = parseInt(value);
+    selectedCommunityGeneral = value;
+    optionCommunityGeneral();
+}
+function optionCommunityGeneral() {
+    if (!isNaN(selectedCommunityGeneral)) {
+        communityGeneralNumber = selectedCommunityGeneral;
+    } else {
+        communityGeneralNumber = 0;
+    }
     votingProb();
 }
+
+
+
    
 let selectedIncomeGeneral;
 let incomeGeneralNumber
@@ -698,8 +747,8 @@ let probVoting;
 function votingProb() {
     // Biden vote probability
     //****NEED TO REPLACE WITH ACTUAL FORMULA JUST TESTING FOR NOW
-        probVoting = (primaryNumber/2) * (selectedAgeGeneral/50) * (genderGeneralNumber) * (raceEthnicityGeneralNumber/4) *
-        (selectedCommunityGeneral/20) * (incomeGeneralNumber/10) * (swingStateGeneralNumber);
+        probVoting = (primaryNumber/2) * (ageGeneralNumber/50) * (genderGeneralNumber) * (raceEthnicityGeneralNumber/4) *
+        (communityGeneralNumber/20) * (incomeGeneralNumber/10) * (swingStateGeneralNumber);
         // Update votingProb
         document.getElementById("probVoting").innerHTML = probVoting.toFixed(5);
         gaugeChart2();
@@ -757,64 +806,161 @@ function gaugeChart2() {
         Plotly.newPlot("gauge2", data, layout)
     };
 
-//Creating the gauge2 chart 
+//Creating gauge2 chart 
 gaugeChart2()
 
 
+//Section on predicting if someone is a swing voter or not
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
-//     //ideology dropdown
-//     ideology.forEach(ideologies => {
-//         const option = document.createElement("option");
-//         option.text = ideologies;
-//         option.value = ideologies;
-//         ideologySelect.appendChild(option);
-//     });            
-//     //partyStrenght dropdown
-//     partyStrength.forEach(parties => {
-//         const option = document.createElement("option");
-//         option.text = parties;
-//         option.value = parties;
-//         partyStrenghtSelect.appendChild(option);
-//     });                  
-//     //dislikeBiden dropdown
-//     dislikeBiden.forEach(bidenDislike => {
-//         const option = document.createElement("option");
-//         option.text = bidenDislike;
-//         option.value = bidenDislike;
-//         dislikeBidenSelect.appendChild(option);
-//     });        
-//     //dislikeTrump dropdown
-//     dislikeTrump.forEach(trumpDislike => {
-//         const option = document.createElement("option");
-//         option.text = trumpDislike;
-//         option.value = trumpDislike;
-//         dislikeTrumpSelect.appendChild(option);
-//     });           
-//     //splitUnified dropdown
-//     splitUnified.forEach(unifiedSplit => {
-//         const option = document.createElement("option");
-//         option.text = unifiedSplit;
-//         option.value = unifiedSplit;
-//         splitUnifiedSelect.appendChild(option);
-//     });          
-//     //countryTrack dropdown
-//     countryTrack.forEach(trackCountry => {
-//         const option = document.createElement("option");
-//         option.text = trackCountry;
-//         option.value = trackCountry;
-//         countryTrackSelect.appendChild(option);
-//     });           
-// }
+let selectedIdeology;
+let ideologyNumber;
+// Function to change right track dropdown values
+function optionChangedIdeology(value) {
+    selectedIdeology = value;
+    optionIdeologyNumber();
+}
+//***Function to convert right track to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+function optionIdeologyNumber() {
+    if (selectedIdeology === "Extremely liberal") {
+        ideologyNumber = 1;
+    } else if (selectedIdeology === "Liberal") {
+        ideologyNumber = 2;
+    } else if (selectedIdeology === "Slightly liberal") {
+        ideologyNumber = 3;
+    } else if (selectedIdeology === "Moderate; middle of the road") {
+        ideologyNumber = 4;
+    } else if (selectedIdeology === "Slightly conservative") {
+        ideologyNumber = 5;
+    } else if (selectedIdeology === "Conservative") {
+        ideologyNumber = 6;
+    } else if (selectedIdeology === "Extremely conservative") {
+        ideologyNumber = 7;
+    } else if (selectedIdeology === "Haven’t thought much about this") {
+        ideologyNumber = 8;
+    } else {
+        ideologyNumber = 0;
+    }
+    probSwingVoter();
+}
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+let selectedPartyStrength;
+let partyStrengthNumber
+// Function to change right track dropdown values
+function optionChangedPartyStrength(value) {
+    selectedPartyStrength = value;
+    optionPartyStrengthNumber();
+}
+//***Function to convert right track to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+function optionPartyStrengthNumber() {
+    if (selectedPartyStrength === "Strong Democrat") {
+        partyStrengthNumber = 1;
+    } else if (selectedPartyStrength === "Not Very Strong Democrat") {
+        partyStrengthNumber = 2;
+    } else if (selectedPartyStrength === "Independent Lean Democrat") {
+        partyStrengthNumber = 3;
+    } else if (selectedPartyStrength === "Independent") {
+        partyStrengthNumber = 4;
+    } else if (selectedPartyStrength === "Independent Lean Republican") {
+        partyStrengthNumber = 5;
+    } else if (selectedPartyStrength === "Not Very Strong Republican") {
+        partyStrengthNumber = 6;
+    } else if (selectedPartyStrength === "Strong Republican") {
+        partyStrengthNumber = 7;
+    } else {
+        partyStrengthNumber = 0;
+    }
+    probSwingVoter();
+}
+
+let selectedDislikeBiden;
+let dislikeBidenNumber = 0;
+// Function to change age dropdown values
+function optionChangedDislikeBiden(value) {
+    selectedDislikeBiden = value;
+    optionDislikeBidenNumber();
+}
+//***Function to convert right track to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+function optionDislikeBidenNumber() {
+    if (!isNaN(selectedDislikeBiden)) {
+        dislikeBidenNumber = selectedDislikeBiden;
+    } else {
+        dislikeBidenNumber = 0;
+    }
+    probSwingVoter();
+}
+
+let selectedDislikeTrump;
+let dislikeTrumpNumber;
+// Function to change age dropdown values
+function optionChangedDislikeTrump(value) {
+    selectedDislikeTrump = value;
+    optionDislikeTrumpNumber();
+}
+//***Function to convert right track to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+function optionDislikeTrumpNumber() {
+    if (!isNaN(selectedDislikeTrump)) {
+        dislikeTrumpNumber = selectedDislikeTrump;
+    } else {
+        dislikeTrumpNumber = 0;
+    }
+    probSwingVoter();
+}
+
+let selectedSplitUnified;
+let splitUnifiedNumber
+// Function to change right track dropdown values
+function optionChangedSplitUnified(value) {
+    selectedSplitUnified = value;
+    optionSplitUnifiedNumber();
+}
+//***Function to convert right track to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+function optionSplitUnifiedNumber() {
+    if (selectedSplitUnified === "Better when one party controls both") {
+        splitUnifiedNumber = 1;
+    } else if (selectedSplitUnified === "Better when control is split") {
+        splitUnifiedNumber = 2;
+    } else if (selectedSplitUnified === "It doesn’t matter") {
+        splitUnifiedNumber = 3;
+    } else {
+        splitUnifiedNumber = 0;
+    }
+    probSwingVoter();
+}
+
+let selectedCountryTrack;
+let countryTrackNumber
+// Function to change right track dropdown values
+function optionChangedCountryTrack(value) {
+    selectedCountryTrack = value;
+    optionCountryTrackNumber();
+}
+//***Function to convert right track to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+function optionCountryTrackNumber() {
+    if (selectedCountryTrack === "Right Track") {
+        countryTrackNumber = 1;
+    } else if (selectedCountryTrack === "Wrong Track") {
+        countryTrackNumber = 2;
+    } else {
+        countryTrackNumber = 0;
+    }
+    probSwingVoter();
+}
+
+let swingVoting;
+// Function to calculate probability of swing voting
+function probSwingVoter() {
+    swingVoting = (ideologyNumber/5) * (partyStrengthNumber/4) * (dislikeBidenNumber/2) * (dislikeTrumpNumber/4) * 
+        (splitUnifiedNumber/4) * (countryTrackNumber);
+    document.getElementById("swingVoting").innerHTML = swingVoting.toFixed(5);
+    gaugeChart3();
+}
 
 //****NEED TO CHANGE VALUE TO PROBABILITY OF being a swing voter//////
 //Creating the gauge chart for probability of being a swing voter
 function gaugeChart3() {
     let data = [{
         domain: { x: [0, 1], y: [0, 1] },
-        value: 0.75,
+        value: swingVoting,
         type: "indicator",
         mode: "gauge+number",
         gauge: {
@@ -849,7 +995,7 @@ function gaugeChart3() {
         height: 400,
         margin: { t: 50, b: 0, l: 50, r: 50 },
         title: {
-            text: "Swing Voter Probabilty",
+            text: "Swing Voter Probability",
             font: {
                 family: 'Arial Black',
                 size: 24
@@ -861,5 +1007,5 @@ function gaugeChart3() {
         Plotly.newPlot("gauge3", data, layout)
     };
 
-//Creating the gauge2 chart 
+//Creating gauge3 chart 
 gaugeChart3()
