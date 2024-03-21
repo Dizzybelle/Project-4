@@ -473,15 +473,35 @@ function optionIncomeNumber() {
     presidentVoteProb();
 }
 
+// let probVoteBiden;
+// let probVoteTrump;
+// // Function to calculate probability of voting for Biden or Trump
+// function presidentVoteProb() {
+//     // Biden vote probability
+//     //****NEED TO REPLACE WITH ACTUAL FORMULA JUST TESTING FOR NOW
+//         probVoteBiden = (partyNumber) * (ageNumber/40) * (genderNumber) * (locationNumber) * 
+//         (rightTrackNumber) * (thermoBidenNumber/20) * (thermoTrumpNumber/20) * (raceEthnicityNumber/6) * 
+//         (incomeNumber/21);
+//         probVoteTrump = 1 - probVoteBiden; 
+//         // Update probVoteBiden
+//         document.getElementById("probVoteBiden").innerHTML = probVoteBiden.toFixed(5);
+//         document.getElementById("probVoteTrump").innerHTML = probVoteTrump.toFixed(5);
+//         gaugeChart1();
+// }
+
 let probVoteBiden;
 let probVoteTrump;
+let probVoteLogOdds;
+let probVoteOdds;
 // Function to calculate probability of voting for Biden or Trump
 function presidentVoteProb() {
     // Biden vote probability
     //****NEED TO REPLACE WITH ACTUAL FORMULA JUST TESTING FOR NOW
-        probVoteBiden = (partyNumber) * (ageNumber/40) * (genderNumber) * (locationNumber) * 
-        (rightTrackNumber) * (thermoBidenNumber/20) * (thermoTrumpNumber/20) * (raceEthnicityNumber/6) * 
-        (incomeNumber/21);
+        probVoteLogOdds = intercept + partyNumber + (beta1 * ageNumber) + genderNumber + locationNumber + 
+            rightTrackNumber + (beta2 * thermoBidenNumber) + (beta3 * thermoTrumpNumber) + 
+            raceEthnicityNumber + incomeNumber;
+        probVoteOdds = Math.exp(probVoteLogOdds);
+        probVoteBiden = probVoteOdds / (1 + probVoteOdds);
         probVoteTrump = 1 - probVoteBiden; 
         // Update probVoteBiden
         document.getElementById("probVoteBiden").innerHTML = probVoteBiden.toFixed(5);
@@ -742,18 +762,37 @@ function optionswingStateGeneralNumber() {
     votingProb();
 }
 
+// let probVoting;
+// // Function to calculate probability of voting in the general election
+// function votingProb() {
+//     // Biden vote probability
+//     //****NEED TO REPLACE WITH ACTUAL FORMULA JUST TESTING FOR NOW
+//         probVoting = (primaryNumber/2) * (ageGeneralNumber/50) * (genderGeneralNumber) * (raceEthnicityGeneralNumber/4) *
+//         (communityGeneralNumber/20) * (incomeGeneralNumber/10) * (swingStateGeneralNumber);
+//         // Update votingProb
+//         document.getElementById("probVoting").innerHTML = probVoting.toFixed(5);
+//         gaugeChart2();
+// }
+// votingProb()
+
 let probVoting;
+let votingProbLogOdds;
+let votingProbOdds;
 // Function to calculate probability of voting in the general election
 function votingProb() {
     // Biden vote probability
     //****NEED TO REPLACE WITH ACTUAL FORMULA JUST TESTING FOR NOW
-        probVoting = (primaryNumber/2) * (ageGeneralNumber/50) * (genderGeneralNumber) * (raceEthnicityGeneralNumber/4) *
-        (communityGeneralNumber/20) * (incomeGeneralNumber/10) * (swingStateGeneralNumber);
+    votingProbLogOdds = intercept + primaryNumber + (beta1 * ageGeneralNumber) + genderGeneralNumber +
+    raceEthnicityGeneralNumber + communityGeneralNumber + incomeGeneralNumber +
+    swingStateGeneralNumber
+        votingProbOdds = Math.exp(votingProbLogOdds);
+        probVoting = votingProbOdds / (1 + votingProbOdds);
         // Update votingProb
         document.getElementById("probVoting").innerHTML = probVoting.toFixed(5);
         gaugeChart2();
 }
 votingProb()
+
 //****NEED TO CHANGE VALUE TO PROBABILITY OF VOTING//////
 //Creating the gauge chart for probability of voting
 function gaugeChart2() {
@@ -946,11 +985,25 @@ function optionCountryTrackNumber() {
     probSwingVoter();
 }
 
+// let swingVoting;
+// // Function to calculate probability of swing voting
+// function probSwingVoter() {
+//     swingVoting = (ideologyNumber/5) * (partyStrengthNumber/4) * (dislikeBidenNumber/2) * (dislikeTrumpNumber/4) * 
+//         (splitUnifiedNumber/4) * (countryTrackNumber);
+//     document.getElementById("swingVoting").innerHTML = swingVoting.toFixed(5);
+//     gaugeChart3();
+// }
+
 let swingVoting;
+let swingVotingLogOdds;
+let swingVotingOdds;
 // Function to calculate probability of swing voting
 function probSwingVoter() {
-    swingVoting = (ideologyNumber/5) * (partyStrengthNumber/4) * (dislikeBidenNumber/2) * (dislikeTrumpNumber/4) * 
-        (splitUnifiedNumber/4) * (countryTrackNumber);
+    swingVotingLogOdds = intercept + ideologyNumber + partyStrengthNumber + 
+        (beta1 * dislikeBidenNumber) + (beta1 * dislikeTrumpNumber) + splitUnifiedNumber + 
+        countryTrackNumber;
+    swingVotingOdds = Math.exp(swingVotingLogOdds);
+    swingVoting = swingVotingOdds / (1 + swingVotingOdds);
     document.getElementById("swingVoting").innerHTML = swingVoting.toFixed(5);
     gaugeChart3();
 }
