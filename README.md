@@ -11,9 +11,6 @@ The citation for the ANES data is: American National Election Studies. 2021. ANE
 The target variable was whether or not a respondent voted for Biden or Trump. The features we used to train the model are listed below along with an explanation of why each feature was used,
 -Party ID: Republicans are expected to vote more for Trump, Democrats are expected to vote more for Biden
 -Age: Older voters tend to be more likely to support Trump, while younger voters are more likely to support Biden
--Gender: Women are more likely to support Biden, while Men are more likely to support Trump
--Location: People who live in more rural locations tend to be more conservative and therefore more likely to vote for Trump, while people who live in more urban areas tend to be more liberal and therefore more likely to vote for Biden
--If the respondent thought the country was on the right track in 2020: People who thought the country was on the right track under Trump are expected to be more likely to vote for Trump, while people who did not think the country was on the right track are expected to be more likely to vote for Biden
 -Thermometer rating (0-100) of Biden: People with higher thermometer ratings of Biden are expected to be more likely to vote for Biden
 -Thermometer rating (0-100) of Trump: People with higher thermometer ratings of Biden are expected to be more likely to vote for Trump
 -Race/Ethnicity: People who are white are more likely to vote for Trump, while minority groups are more likely to vote for Biden
