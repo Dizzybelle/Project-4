@@ -29,7 +29,7 @@
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
         <h1>Voter Predictor</h1>
-        <p>Use the dropdown menus below to explore if someone will vote for president, if they will vote, and if they are a swing voter</p>
+        <p>Use the dropdown menus below to explore how someone might vote for president</p>
       </div>
 
 <div class="line1"></div>
@@ -49,21 +49,6 @@
       <h3>Select Age</h3>
       <select id="Age_Options" onchange="optionChangedAge(this.value)"></select>
     </div>
-
-      <div class="col-md-4 well">
-        <h3>Select Gender</h3>
-        <select id="Gender_Options" onchange="optionChangedGender(this.value)"></select>
-      </div>
-
-      <div class="col-md-4 well">
-        <h3>Select Location</h3>
-        <select id="Location_Options" onchange="optionChangedLocation(this.value)"></select>
-      </div>
-
-      <div class="col-md-4 well">
-        <h3>Select does the respondent think the county is on the "right track"</h3>
-        <select id="Right_Track_Options" onchange="optionChangedRightTrack(this.value)"></select>
-      </div>
 
       <div class="col-md-4 well">
         <h3>Select Thermometer Rating Biden (0 is very unfavorable, 100 is very favorable)</h3>
@@ -104,115 +89,11 @@
 
     <div class="line2"></div>
 
-    </div>
-        <h4>Likelihood of someone voting in the general election (for president) or not</h4>
-    </div>
-
-  <div class="row">
-    <div class="col-md-4 well">
-      <h3>Select if respondent vote in the presidential primary or caucus?</h3>
-      <select id="Primary_Vote_Options" onchange="optionChangedPrimary(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-      <h3>Select Age</h3>
-      <select id="Age_Options_Voting" onchange="optionChangedAgeGeneral(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-      <h3>Select Gender</h3>
-      <select id="Gender_Options_Voting" onchange="optionChangedGenderGeneral(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-        <h3>Select Race/Ethnicity</h3>
-        <select id="Race_Ethnicity_Options_Voting" onchange="optionChangedRaceEthnicityGeneral(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-      <h3>Select number of years a respondent has lived in a community</h3>
-      <select id="Years_Community_Options" onchange="optionChangedCommunityGeneral(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-      <h3>Select respondent's total household income category</h3>
-      <select id="Income_Options_Voting" onchange="optionChangedIncomeGeneral(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-      <h3>Select if a respondent believes the presidential race will be close in their state</h3>
-      <select id="Swing_State_Options" onchange="optionChangedswingStateGeneral(this.value)"></select>
-    </div>
-  </div>
-</div>
-
-<!-- Output for voting probability -->
-<div class="voteProb">
-    <h7>Probability of Voting in the General Election: <span id="probVoting"></span></h7>
-</div>
-
-<div id="probVotingBox"></div>
-
-<div class="voteProbGauge">
-    <div id="gauge2"></div>
-</div>
-
-<div class="line3"></div>
-
-<!-- Predicting who is likely to be a swing voter -->
-</div>
-    <h4>Predicting who is likely to be a swing voter in the presidential election</h4>
-</div>
-
-<div class="row">
-    <div class="col-md-4 well">
-      <h3>Select respondents ideology (liberal/conservative)</h3>
-      <select id="Ideology_Options" onchange="optionChangedIdeology(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-      <h3>Select strength of party ID</h3>
-      <select id="Party_Strength_Options" onchange="optionChangedPartyStrength(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-      <h3>Select respondent like-dislike of Biden (0 is strong dislike 10 is strong like)</h3>
-      <select id="Dislike_Biden_Options" onchange="optionChangedDislikeBiden(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-        <h3>Select respondent like-dislike of Trump (0 is strong dislike 10 is strong like)</h3>
-        <select id="Dislike_Trump_Options" onchange="optionChangedDislikeTrump(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-      <h3>Select if a respondent prefers split or unified government</h3>
-      <select id="Split_Unified_Options" onchange="optionChangedSplitUnified(this.value)"></select>
-    </div>
-
-    <div class="col-md-4 well">
-      <h3>Does a respondent believe the country was on the right track under president Trump</h3>
-      <select id="Country_Track_Options" onchange="optionChangedCountryTrack(this.value)"></select>
-    </div>
-  </div>
-
-<!-- Output for voting probability -->
-<div class="swingProb">
-    <h8>Probability of a Voter being a Swing Voter: <span id="swingVoting"></span></h8>
-</div>
-
-<div id="swingVotingBox"></div>
-
-<div class="swingProbGauge">
-    <div id="gauge3"></div>
-</div>
-
 <div class="line4"></div>
 
 <!-- Adding in horizontal lines -->
 <div class="horizontalLine1"></div>
-<div class="horizontalLine2"></div>
-<div class="horizontalLine3"></div>
+
 
 </div>
 
