@@ -9,12 +9,12 @@ The citation for the ANES data is: American National Election Studies. 2021. ANE
 
 ## The Model
 The target variable was whether or not a respondent voted for Biden or Trump. The features we used to train the model are listed below along with an explanation of why each feature was used,
-- Party ID: Republicans are expected to vote more for Trump, Democrats are expected to vote more for Biden
-- Age: Older voters tend to be more likely to support Trump, while younger voters are more likely to support Biden
-- Thermometer rating (0-100) of Biden: People with higher thermometer ratings of Biden are expected to be more likely to vote for Biden
-- Thermometer rating (0-100) of Trump: People with higher thermometer ratings of Biden are expected to be more likely to vote for Trump
-- Race/Ethnicity: People who are white are more likely to vote for Trump, while minority groups are more likely to vote for Biden
-- Income: Those with higher incomes tend to be more conservative and therefore more likely to vote for Trump, while those with lower incomes tend to be more likely to vote Democrat and therefore vote for Biden
+  - Party ID: Republicans are expected to vote more for Trump, Democrats are expected to vote more for Biden
+  - Age: Older voters tend to be more likely to support Trump, while younger voters are more likely to support Biden
+  - Thermometer rating (0-100) of Biden: People with higher thermometer ratings of Biden are expected to be more likely to vote for Biden
+  - Thermometer rating (0-100) of Trump: People with higher thermometer ratings of Biden are expected to be more likely to vote for Trump
+  - Race/Ethnicity: People who are white are more likely to vote for Trump, while minority groups are more likely to vote for Biden
+  - Income: Those with higher incomes tend to be more conservative and therefore more likely to vote for Trump, while those with lower incomes tend to be more likely to vote Democrat and therefore vote for Biden
 
 ## The Final User Product
 Once we trained and optimized the model we took the coefficients from the model and plugged them into a JavaScript file that is then used along with html and css to create a webpage where someone can select the individual characteristics of a respondent and get the likelihood of the respondent voting for Trump or Biden.
