@@ -20,3 +20,4 @@ The target variable was whether or not a respondent voted for Biden or Trump. Th
 ## The Final User Product
 Once we trained and optimized the model we took the coefficients from the model and plugged them into a JavaScript file that is then used along with html and css to create a webpage where someone can select the individual characteristics of a respondent and get the likelihood of the respondent voting for Trump or Biden.
 
+## Results
