@@ -25,6 +25,7 @@ const income = ["<select income>", "Under $9,999", "$10,000-14,999", "$15,000-19
                 "$50,000-59,999", "$60,000-64,999", "$65,000-69,999", "$70,000-74,999", "$75,000-79,999",
                 "$80,000-89,999", "$90,000-99,999", "$100,000-109,999", "$110,000-124,999", "$125,000-149,999",
                 "$150,000-174,999", "$175,000-249,999", "$250,000 or more", "Don't Know", "No Response"];
+const ideology = ["<select ideology>", "Liberal", "Moderate", "Conservative"];
 
 // Populating the dropdown menu with options
 function populateDropdowns() {
@@ -34,6 +35,7 @@ function populateDropdowns() {
     const thermoTrumpSelect = document.getElementById("Thermo_Trump_Options");
     const raceEthnicitySelect = document.getElementById("Race_Ethnicity_Options");
     const incomeSelect = document.getElementById("Income_Options");
+    const ideologySelect = document.getElementById("Ideology_Options");
 
     // partyID dropdown
     partyIDs.forEach(id => {
@@ -76,13 +78,17 @@ function populateDropdowns() {
         option.text = incomes;
         option.value = incomes;
         incomeSelect.appendChild(option);
-    });             
+    });
+    // ideology dropdown
+    ideology.forEach(id => {
+        const option = document.createElement("option");
+        option.text = id;
+        option.value = id;
+        ideologySelect.appendChild(option);
+    });           
 }
 
-
-
 //Section on predicting how likely someone is to vote for Biden or Trump//
-
 let selectedPartyID;
 let partyNumber;
 // Function to change partyID values
@@ -94,11 +100,13 @@ function optionChangedParty(value) {
 //***Need to update this to instead give the coeficient value
 function optionPartyNumber() {
     if (selectedPartyID === "Democrat") {
-        partyNumber = .1;
+        partyNumber = -1.17835265;
     } else if (selectedPartyID === "Republican") {
-        partyNumber = .2;
+        partyNumber = 0.08216467;
+    } else if (selectedPartyID === "Independent") {
+        partyNumber = -0.62182148;
     } else {
-        partyNumber = 0;
+        partyNumber = 0.35773164;
     }
     //Update presidentVoteProb
     presidentVoteProb();
@@ -164,17 +172,17 @@ function optionChangedRaceEthnicity(value) {
 //***Function to convert right track to coefficient values from each dummy variable, using 1 & 2 as placeholders now
 function optionRaceEthnicityNumber() {
     if (selectedRaceEthnicity === "White, non-Hispanic") {
-        raceEthnicityNumber = .1;
+        raceEthnicityNumber = 0.24347618;
     } else if (selectedRaceEthnicity === "Black, non-Hispanic") {
-        raceEthnicityNumber = .2;
+        raceEthnicityNumber = -1.02958335;
     } else if (selectedRaceEthnicity === "Hispanic") {
-        raceEthnicityNumber = .3;
+        raceEthnicityNumber = -0.22075941;
     } else if (selectedRaceEthnicity === "Asian or Native Hawaiian/other Pacific Islander, non-Hispanic alone") {
-        raceEthnicityNumber = .4;
+        raceEthnicityNumber = -0.16054681;
     } else if (selectedRaceEthnicity === "Native American/Alaska Native or other race, non-Hispanic alone") {
-        raceEthnicityNumber = .5;
+        raceEthnicityNumber = -0.08241232;
     } else if (selectedRaceEthnicity === "Multiple races, non-Hispanic") {
-        raceEthnicityNumber = .6;
+        raceEthnicityNumber = -0.11045211;
     } else {
         raceEthnicityNumber = 0;
     }
@@ -193,51 +201,71 @@ function optionChangedIncome(value) {
 //***Function to convert RaceEthnicity to coefficient values from each dummy variable, using 1 & 2 as placeholders now
 function optionIncomeNumber() {
     if (selectedIncome === "Under $9,999") {
-        incomeNumber = .1;
+        incomeNumber = -0.3935856;
     } else if (selectedIncome === "$10,000-14,999") {
-        incomeNumber = .2;
+        incomeNumber = -0.26191344;
     } else if (selectedIncome === "$15,000-19,999") {
-        incomeNumber = .3;
+        incomeNumber = -0.27192622;
     } else if (selectedIncome === "$20,000-24,999") {
-        incomeNumber = .4;
+        incomeNumber = -0.07364834;
     } else if (selectedIncome === "$25,000-29,999") {
-        incomeNumber = .5;
+        incomeNumber = -0.4250685;
     } else if (selectedIncome === "$30,000-34,999") {
-        incomeNumber = .6;
+        incomeNumber = -0.66745867;
     } else if (selectedIncome === "$35,000-39,999") {
-        incomeNumber = .7;
+        incomeNumber = 0.153246;
     } else if (selectedIncome === "$40,000-44,999") {
-        incomeNumber = .8;
+        incomeNumber = 0.23074272;
     } else if (selectedIncome === "$45,000-49,999") {
-        incomeNumber = .9;
+        incomeNumber = -1.00303706;
     } else if (selectedIncome === "$50,000-59,999") {
-        incomeNumber = .10;
+        incomeNumber = 0.09926488;
     } else if (selectedIncome === "$60,000-64,999") {
-        incomeNumber = .11;
+        incomeNumber = -0.27398739;
     } else if (selectedIncome === "$65,000-69,999") {
-        incomeNumber = .12;
+        incomeNumber = -0.10804481;
     } else if (selectedIncome === "$70,000-74,999") {
-        incomeNumber = .13;
+        incomeNumber = 0.07272828;
     } else if (selectedIncome === "$75,000-79,999") {
-        incomeNumber = .14;
+        incomeNumber = 0.09253638;
     } else if (selectedIncome === "$80,000-89,999") {
-        incomeNumber = .15;
+        incomeNumber = -0.71568696;
     } else if (selectedIncome === "$90,000-99,999") {
-        incomeNumber = .16;
+        incomeNumber = 0.00183128;
     } else if (selectedIncome === "$100,000-109,999") {
-        incomeNumber = .17;
+        incomeNumber = 1.01291565;
     } else if (selectedIncome === "$110,000-124,999") {
-        incomeNumber = .18;
+        incomeNumber = 0.26735315;
     } else if (selectedIncome === "$125,000-149,999") {
-        incomeNumber = .19;
+        incomeNumber = 0.52147345;
     } else if (selectedIncome === "$150,000-174,999") {
-        incomeNumber = .20;
+        incomeNumber = 0.68193045;
     } else if (selectedIncome === "$175,000-249,999") {
-        incomeNumber = .21;
+        incomeNumber = -0.21814606;
     } else if (selectedIncome === "$250,000 or more") {
-        incomeNumber = .22;
+        incomeNumber = -0.08179698;
     } else {
         incomeNumber = 0;
+    }
+    //Update presidentVoteProb
+    presidentVoteProb();
+}
+
+let ideologyNumber;
+// Function to change ideology values
+function optionChangedIdeology(value) {
+    selectedIdeology = value;
+    optionIdeologyNumber();
+}
+// Function to convert partyID string to text and update the party number
+//***Need to update this to instead give the coeficient value
+function optionIdeologyNumber() {
+    if (selectedIdeology === "Liberal") {
+        ideologyNumber = -1.18672884;
+    } else if (selectedIdeology === "Conservative") {
+        ideologyNumber = -0.26711137;
+    } else {
+        ideologyNumber = 0.09356239;
     }
     //Update presidentVoteProb
     presidentVoteProb();
@@ -250,9 +278,9 @@ let probVoteOdds;
 // Function to calculate probability of voting for Biden or Trump
 function presidentVoteProb() {
     // Biden vote probability
-    //****NEED TO REPLACE WITH ACTUAL FORMULA JUST TESTING FOR NOW
-        probVoteLogOdds = 0.01 + partyNumber + (.01 * ageNumber) + (.01 * thermoBidenNumber) + (.01 * thermoTrumpNumber) + 
-            raceEthnicityNumber + incomeNumber;
+        probVoteLogOdds = -2.23878003 + partyNumber + (-0.01267862 * ageNumber) + 
+        (-0.00547679 * thermoBidenNumber) + (0.07791929 * thermoTrumpNumber) + 
+            raceEthnicityNumber + incomeNumber + ideologyNumber;
         probVoteOdds = Math.exp(probVoteLogOdds);
         probVoteBiden = probVoteOdds / (1 + probVoteOdds);
         probVoteTrump = 1 - probVoteBiden; 

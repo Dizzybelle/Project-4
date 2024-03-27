@@ -15,6 +15,7 @@ The target variable was whether or not a respondent voted for Biden or Trump. Th
   - Thermometer rating (0-100) of Trump: People with higher thermometer ratings of Biden are expected to be more likely to vote for Trump
   - Race/Ethnicity: People who are white are more likely to vote for Trump, while minority groups are more likely to vote for Biden
   - Income: Those with higher incomes tend to be more conservative and therefore more likely to vote for Trump, while those with lower incomes tend to be more likely to vote Democrat and therefore vote for Biden
+  - Ideology: Ideology (Liberal/Conservative) was also included in addition to party because many people do not identify with a party but do identify with an ideology. Those who are liberal are expected to be more likely to vote for Biden, while those who are conservative are expected to be more likely to vote for Trump.
 
 ## The Final User Product
 Once we trained and optimized the model we took the coefficients from the model and plugged them into a JavaScript file that is then used along with html and css to create a webpage where someone can select the individual characteristics of a respondent and get the likelihood of the respondent voting for Trump or Biden.
