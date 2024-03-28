@@ -96,8 +96,7 @@ function optionChangedParty(value) {
     selectedPartyID = value;
     optionPartyNumber();
 }
-// Function to convert partyID string to text and update the party number
-//***Need to update this to instead give the coeficient value
+//Function to convert Party to coefficient values from each dummy variable
 function optionPartyNumber() {
     if (selectedPartyID === "Democrat") {
         partyNumber = -1.17835265;
@@ -169,7 +168,7 @@ function optionChangedRaceEthnicity(value) {
     //Update presidentVoteProb
     optionRaceEthnicityNumber();
 }
-//***Function to convert right track to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+//Function to convert RaceEthnicity to coefficient values from each dummy variable
 function optionRaceEthnicityNumber() {
     if (selectedRaceEthnicity === "White, non-Hispanic") {
         raceEthnicityNumber = 0.24347618;
@@ -198,7 +197,7 @@ function optionChangedIncome(value) {
     //Update presidentVoteProb
     optionIncomeNumber();
 }
-//***Function to convert RaceEthnicity to coefficient values from each dummy variable, using 1 & 2 as placeholders now
+//Function to convert RaceEthnicity to coefficient values from each dummy variable
 function optionIncomeNumber() {
     if (selectedIncome === "Under $9,999") {
         incomeNumber = -0.3935856;
@@ -257,8 +256,7 @@ function optionChangedIdeology(value) {
     selectedIdeology = value;
     optionIdeologyNumber();
 }
-// Function to convert partyID string to text and update the party number
-//***Need to update this to instead give the coeficient value
+//Function to convert ideology to coefficient values from each dummy variable
 function optionIdeologyNumber() {
     if (selectedIdeology === "Liberal") {
         ideologyNumber = -1.18672884;
@@ -282,8 +280,8 @@ function presidentVoteProb() {
         (-0.00547679 * thermoBidenNumber) + (0.07791929 * thermoTrumpNumber) + 
             raceEthnicityNumber + incomeNumber + ideologyNumber;
         probVoteOdds = Math.exp(probVoteLogOdds);
-        probVoteBiden = probVoteOdds / (1 + probVoteOdds);
-        probVoteTrump = 1 - probVoteBiden; 
+        probVoteTrump = probVoteOdds / (1 + probVoteOdds);
+        probVoteBiden = 1 - probVoteTrump; 
         // Update probVoteBiden
         document.getElementById("probVoteBiden").innerHTML = probVoteBiden.toFixed(5);
         document.getElementById("probVoteTrump").innerHTML = probVoteTrump.toFixed(5);
@@ -294,7 +292,7 @@ function presidentVoteProb() {
 function gaugeChart1() {
     let data = [{
         domain: { x: [0, 1], y: [0, .5] },
-        value: probVoteBiden,
+        value: probVoteTrump,
         type: "indicator",
         mode: "gauge",
         gauge: {
