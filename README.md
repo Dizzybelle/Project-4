@@ -21,3 +21,4 @@ The target variable was whether or not a respondent voted for Biden or Trump. Th
 Once we trained and optimized the model we took the coefficients from the model and plugged them into a JavaScript file that is then used along with html and css to create a webpage where someone can select the individual characteristics of a respondent and get the likelihood of the respondent voting for Trump or Biden.
 
 ## Results
+The variables that had the most impact on whether or not someone was likely to vote for Biden or Trump were the thermometer rating for Trump, Race/Ethnicity, Ideology, and Party. Interestingly the thermometer rating for Biden had much less of an impact, this is likely because Trump is a more polarizing figure than Trump. Interestingly, Income and Age do have some impact on a respondent's likelihood of voting for Biden/Trump but much less than the other variables.
